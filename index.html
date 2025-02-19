@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self' 'unsafe-inline'"
+    />
+    <meta
+            http-equiv="X-Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'"
+    />
+    <title>Hello from Electron renderer!</title>
+</head>
+<body>
+<h1>Hello from Electron renderer!</h1>
+<p>👋</p>
+<p id="info"></p>
+<p id="versions"></p>
+<p id="content"></p>
+<p id="dynamic"></p>
+<p id="pong"></p>
+<p id="pingCount"></p>
+<p id="f"></p>
+
+<div>
+    <header>IPC communication</header>
+    <button onclick="functionPing()" id="ping">ping</button>
+</div>
+
+<script src="./renderer.js"></script>
+<script type="application/javascript">
+    // 内联脚本执行,可能受到CSP 安全策略影响,我们可以降低 安全性 .. `unsafe-inline` ...
+    const vvv = window.document.getElementById("f");
+    vvv.innerText = "函数定义";
+
+    // document.getElementById('ping').onclick = functionPing;
+</script>
+</body>
+</html>
